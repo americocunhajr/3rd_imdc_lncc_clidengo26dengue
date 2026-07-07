@@ -1,4 +1,4 @@
-## Model 3: LNCC-CLiDENGO-2026-1
+## LNCC-CLiDENGO26-Dengue
 
 <div style="display: flex; align-items: center; flex-wrap: wrap;">
   <div style="flex: 0 0 auto; margin-right: 20px;">
