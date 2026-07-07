@@ -5,20 +5,20 @@
     <img src="../logo/logo-CLiDENGO.png" alt="LNCC-CLiDENGO" width="20%">
   </div>
   <div style="flex: 1 1 auto; min-width: 250px;">
-    <strong>CLiDENGO — CLimate Logistic DENGue Outbreak Simulator</strong> is a forecasting model for DENV dynamics through a mechanistic, stochastic climate-modulated β-logistic growth model for weekly dengue cases at the state (UF) level. It couples a flexible epidemic growth core with a climate response so that periods of favorable weather (e.g., warm, humid, rainy) accelerate epidemic growth in a data-driven way.
+    <strong>CLiDENGO</strong> is a forecasting model for dengue dynamics through a mechanistic, stochastic climate-modulated β-logistic growth model for weekly dengue cases at the state (UF) level. It couples a flexible epidemic growth core with a climate response so that periods of favorable weather (e.g., warm, humid, rainy) accelerate epidemic growth in a data-driven way.
   </div>
 </div>
 
 #### Repository structure:
 ```
-IMDC2026_Model3_LNCC-CLiDENGO-2026-1/
+3rd_imdc_lncc_clidengo26dengue/
 │
-|── DengueSprint2025_DataAggregated: surveillance and climate data aggregated at the state level
+|── Data: surveillance and climate data aggregated at the state level
 │
-|── Dengue_Validation1: model output files for validation challenge 1
-|── Dengue_Validation2: model output files for validation challenge 2
-|── Dengue_Validation3: model output files for validation challenge 3
-|── Dengue_Validation4: model output files for validation challenge 4
+|── Dengue_Validation1_2022–2023-Season: model output files for validation challenge 1
+|── Dengue_Validation2_2023–2024-Season: model output files for validation challenge 2
+|── Dengue_Validation3_2024–2025-Season: model output files for validation challenge 3
+|── Dengue_Validation4_2025–2026-Season: model output files for validation challenge 4
 │
 |── logo: D-FENSE team logo files
 ```
