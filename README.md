@@ -2,7 +2,7 @@
 
 <div style="display: flex; align-items: center; flex-wrap: wrap;">
   <div style="flex: 0 0 auto; margin-right: 20px;">
-    <img src="../logo/logo-CLiDENGO.png" alt="LNCC-CLiDENGO" width="20%">
+    <img src="logo/logo-CLiDENGO.png" alt="LNCC-CLiDENGO" width="20%">
   </div>
   <div style="flex: 1 1 auto; min-width: 250px;">
     <strong>CLiDENGO</strong> is a forecasting model for dengue dynamics through a mechanistic, stochastic climate-modulated β-logistic growth model for weekly dengue cases at the state (UF) level. It couples a flexible epidemic growth core with a climate response so that periods of favorable weather (e.g., warm, humid, rainy) accelerate epidemic growth in a data-driven way.
