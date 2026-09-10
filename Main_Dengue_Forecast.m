@@ -1,5 +1,5 @@
 % -----------------------------------------------------------------
-%  Main_Dengue_Validation4.m
+%  Main_Dengue_Forecast.m
 % -----------------------------------------------------------------
 %  This program runs a predictive model for Dengue outbreaks.
 % -----------------------------------------------------------------
@@ -10,7 +10,7 @@
 %               christian.soize@univ-eiffel.fr
 %               
 %  Initially Programmed: Jul 06, 2026
-%           Last Update: Jul 06, 2026
+%           Last Update: Sep 04, 2026
 % -----------------------------------------------------------------
 
 
@@ -26,7 +26,7 @@ timeStart = tic();
 % -----------------------------------------------------------
 disp(' ------------------------------------------------------ ')
 disp(' IMDC 2026                                              ')
-disp(' Dengue - Validation Test 4                             ')
+disp(' Dengue - Forecast                                      ')
 disp('                                                        ')
 disp(' by                                                     ')
 disp(' Americo Cunha Jr                                       ')
@@ -37,7 +37,7 @@ disp(' ------------------------------------------------------ ')
 
 % simulation information
 % -----------------------------------------------------------
-case_name = 'IMDC2026_Dengue_Validation4';
+case_name = 'IMDC2026_Dengue_Forecast';
 
 disp(' '); 
 disp([' Case Name: ',num2str(case_name)]);
@@ -58,13 +58,13 @@ nReal = 128;
 nEW = 52;
 
 % number of years for training 
-% --- seasons 2010-2011 until 2023-2024 ---
-nYearsTrain = 14;
+% --- seasons 2010-2011 until 2023-2025 ---
+nYearsTrain = 15;
 
 % define validation range endpoints
-% --- season 2025-2026 ---
-startDate = datetime("2025-10-05");    % 41th EW of 2025
-endDate   = datetime("2026-10-04");    % 40th EW of 2026
+% --- season 2027-2027 ---
+startDate = datetime("2026-10-11");    % 41th EW of 2026
+endDate   = datetime("2027-10-03");    % 40th EW of 2027
 
 % build daily vector
 dates_valid = (startDate:caldays(7):endDate)';
@@ -77,8 +77,8 @@ dates_valid.Format = "yyyy-MM-dd";
 % -----------------------------------------------------------
  DirNameCSV_inp = 'Data';
 FileNameCSV_inp = 'IMDC2026_AggregatedData-Dengue_';
- DirNameCSV_out = 'Dengue_Validation4_2025–2026-Season';
-FileNameCSV_out = 'IMDC2026_Dengue_Validation4_';
+ DirNameCSV_out = 'Dengue_Forecast_2026–2027-Season';
+FileNameCSV_out = 'IMDC2026_Dengue_Forecast_';
 % -----------------------------------------------------------
 
 % List of the federation units (ufs) / Brazilian states
@@ -147,7 +147,16 @@ for j = 1:Nufs
     DataTrain = DataRaw(Train_Start:Train_End,:);
     
     % define the validation dataset
+    %DataValid = DataRaw(Valid_Start:Valid_End,:);
+    nRows = height(DataRaw);
+    Train_End = min(Train_End, nRows);
+    Valid_Start = Train_End + 1;
+    Valid_End = min(Valid_Start + nEW - 1, nRows);
+    if Valid_Start > nRows
+        error('Validation start index (%d) exceeds number of rows (%d) in data file.', Valid_Start, nRows);
+    end
     DataValid = DataRaw(Valid_Start:Valid_End,:);
+
 
     % define climate and survailance time-series
     DataTrain_T         = DataTrain.temp_med;
@@ -346,9 +355,6 @@ for j = 1:Nufs
     
     % evaluate the trained model
     [U_incidence_valid,U_prevalence_valid] = fun2(X_opt);
-
-    U_incidence_valid  = [U_incidence_valid;   U_incidence_valid(end,:)];
-    U_prevalence_valid = [U_prevalence_valid; U_prevalence_valid(end,:)];
     
      U_incidence_train = real(U_incidence_train);
     U_prevalence_train = real(U_prevalence_train);
